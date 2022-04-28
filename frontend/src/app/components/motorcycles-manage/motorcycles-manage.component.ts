@@ -116,7 +116,7 @@ export class MotorcyclesManageComponent implements OnInit {
           // console.log("Si funciono XD");
           for(var i=0; i<this.data.length; i++) {
             if(this.data[i].id == id) {
-              this.data.splice(i);
+              this.data.splice(i,1);
             }
           }
           this._toastr.success( "La moto se ha borrado correctamente.", "La moto se ha borrado correctamente!", {
