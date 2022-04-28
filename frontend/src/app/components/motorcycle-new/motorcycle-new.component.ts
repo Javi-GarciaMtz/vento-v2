@@ -46,7 +46,7 @@ export class MotorcycleNewComponent implements OnInit {
     private _motorcycleService: MotorcycleService,
     private _toastr: ToastrService
   ) {
-    this.page_title = "Agregar Nueva Motocicleta";
+    this.page_title = "Agregar Nueva Motocicleta Prueba";
     this.motorcycle = new Motorcycle(1, '', 1, 2, 0, 0, 'instock', 0, 0, 0, 'tax status', 'tax class', '');
   }
 
