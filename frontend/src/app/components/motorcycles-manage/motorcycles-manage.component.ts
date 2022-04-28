@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Router } from '@angular/router';
 import { MotorcycleService } from "../../services/motorcycle.service";
 import { global } from "../../services/global";
-
-declare var jQuery:any;
-declare var $:any;
-
-
+import { DataService } from "../../services/data.service";
+import { Motorcycle } from "../../models/motorcycle";
 
 @Component({
   selector: 'app-motorcycles-manage',
@@ -14,13 +12,16 @@ declare var $:any;
   styleUrls: ['./motorcycles-manage.component.css'],
   providers: [MotorcycleService]
 })
+
 export class MotorcyclesManageComponent implements OnInit {
 
   public url: string;
   public data: any;
 
   constructor(
-    public _http: HttpClient
+    public _http: HttpClient,
+    private _router: Router,
+    public _dataService: DataService
   ) {
     this.url = global.url;
    }
@@ -60,6 +61,12 @@ export class MotorcyclesManageComponent implements OnInit {
         });
     }, 1);
     }, error => console.error(error));
+  }
+
+  modify_motorcycle(id:any) {
+    console.log("XDDD");
+    this._dataService.motorcycle = new Motorcycle(id, 'XDDDDDDDDDD', 0, 0, 0, 0, '', 0, 0, 0, '', '', '');
+    this._router.navigate(['update-motorcycle']);
   }
 
 }

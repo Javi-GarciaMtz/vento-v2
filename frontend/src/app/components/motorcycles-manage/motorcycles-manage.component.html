@@ -9,6 +9,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Job Title</th>
+      <th>Modify</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,8 @@
       <td>{{group.model}}</td>
       <td>{{group.min_price}}</td>
       <td>{{group.max_price}}</td>
+      <td><button type="button" class="btn btn-primary" (click)="modify_motorcycle(group.id)">Primary</button></td>
     </tr>
   </tbody>
 </table>
+
