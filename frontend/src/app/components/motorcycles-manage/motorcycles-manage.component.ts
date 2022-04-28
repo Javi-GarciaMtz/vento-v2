@@ -6,6 +6,7 @@ import { faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-
 import { global } from "../../services/global";
 import { DataService } from "../../services/data.service";
 import { Motorcycle } from "../../models/motorcycle";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-motorcycles-manage',
@@ -25,7 +26,9 @@ export class MotorcyclesManageComponent implements OnInit {
   constructor(
     public _http: HttpClient,
     private _router: Router,
-    public _dataService: DataService
+    public _dataService: DataService,
+    private _toastr: ToastrService,
+    private _motorcycleService: MotorcycleService
   ) {
     this.url = global.url;
    }
@@ -35,12 +38,12 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("INIT");
-    console.log(new Intl.NumberFormat('en-IN').format(3500021.456));
-    console.log("FIN");
+    // console.log("INIT");
+    // console.log(new Intl.NumberFormat('en-IN').format(3500021.456));
+    // console.log("FIN");
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
-    console.log(data);
+    // console.log(data);
     // console.log(this.data);
 
     setTimeout(()=>{
@@ -74,12 +77,11 @@ export class MotorcyclesManageComponent implements OnInit {
     }, error => console.error(error));
   }
 
-  modify_motorcycle(id:any) {
+  search_motorcycle(id:any): any {
     // Se busca la moto de la busqueda del manage
     for(var i=0; i<this.data.length; i++) {
       if(this.data[i].id == id) {
-        // console.log(this.data[i]);
-        this._dataService.motorcycle = new Motorcycle(
+        var moto = new Motorcycle(
           id,
           this.data[i].model,
           this.data[i].min_price,
@@ -93,12 +95,49 @@ export class MotorcyclesManageComponent implements OnInit {
           this.data[i].tax_status,
           this.data[i].tax_class,
           this.data[i].image);
-        break;
+        return moto;
       }
     }
 
+  }
+
+  modify_motorcycle(id:any) {
+    // Se guarda la moto a modiciar en el data service
+    this._dataService.motorcycle = this.search_motorcycle(id);
     // Se redirige al update
     this._router.navigate(['update-motorcycle']);
+  }
+
+  delete_motorcycle(id:any) {
+    // console.log("moto a borrar", id);
+    this._motorcycleService.delete_motorcycle(id).subscribe(
+      response => {
+        if(response && response.status) {
+          // console.log("Si funciono XD");
+          for(var i=0; i<this.data.length; i++) {
+            if(this.data[i].id == id) {
+              this.data.splice(i);
+            }
+          }
+          this._toastr.success( "La moto se ha borrado correctamente.", "La moto se ha borrado correctamente!", {
+            closeButton: true
+          });
+
+        } else {
+          // console.log("Error 1");
+          this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
+            closeButton: true
+          });
+        }
+      },
+      error => {
+        // console.log("Error 2 ", <any>error);
+        this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
+          closeButton: true
+        });
+      }
+    );
+
   }
 
 }

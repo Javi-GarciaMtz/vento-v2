@@ -23,24 +23,24 @@ export class MotorcycleService {
         let json = JSON.stringify(motorcycle);
         let params = 'json='+json;
 
-        // console.log("json:: ", params);
-
         let headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded");
 
         return this._http.post(this.url+'motorcycle/store', params, {headers: headers});
-
     }
 
     update_motorcycle(motorcycle: Motorcycle): Observable<any> {
-        //  Limpiar campo description (editor de texto froala) htmlEntities
-        // user.description = global.htmlEntities(user.description);
-
         let json = JSON.stringify(motorcycle);
         let params = 'json='+json;
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         return this._http.put(this.url+'motorcycle/update/'+motorcycle.id, params, {headers: headers});
+    }
+
+    delete_motorcycle(id: any): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.delete(this.url + 'motorcycle/destroy/' + id, {headers: headers});
     }
 
 }

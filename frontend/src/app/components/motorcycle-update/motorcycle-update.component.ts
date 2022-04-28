@@ -73,7 +73,7 @@ export class MotorcycleUpdateComponent implements OnInit {
   }
 
   on_submit(form: any) {
-    console.log("Actualizando la moto: ", this.motorcycle);
+    // console.log("Actualizando la moto: ", this.motorcycle);
     this._motorcycleService.update_motorcycle(this.motorcycle).subscribe(
       response => {
         if(response && response.status) {
