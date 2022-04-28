@@ -23,12 +23,37 @@ export class MotorcycleService {
         let json = JSON.stringify(motorcycle);
         let params = 'json='+json;
 
-        console.log("json:: ", params);
+        // console.log("json:: ", params);
 
         let headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded");
 
         return this._http.post(this.url+'motorcycle/store', params, {headers: headers});
 
     }
+
+    update_motorcycle(motorcycle: Motorcycle): Observable<any> {
+        //  Limpiar campo description (editor de texto froala) htmlEntities
+        // user.description = global.htmlEntities(user.description);
+
+        let json = JSON.stringify(motorcycle);
+        let params = 'json='+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.post(this.url+'user/update', params, {headers: headers});
+    }
+
+    // update(token, user): Observable<any> {
+    //     //  Limpiar campo description (editor de texto froala) htmlEntities
+    //     user.description = global.htmlEntities(user.description);
+
+    //     let json = JSON.stringify(user);
+    //     let params = 'json='+json;
+
+    //     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
+
+    //     return this._http.post(this.url+'user/update', params, {headers: headers});
+    // }
+
 
 }
