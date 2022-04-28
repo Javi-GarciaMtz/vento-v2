@@ -29,8 +29,8 @@ export class MotorcyclesManageComponent implements OnInit {
   ngOnInit(): void {
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
-    console.log(data);
-    console.log(this.data);
+    // console.log(data);
+    // console.log(this.data);
 
     setTimeout(()=>{
         $('#datatableexample').DataTable({
@@ -64,8 +64,29 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   modify_motorcycle(id:any) {
-    console.log("XDDD");
-    this._dataService.motorcycle = new Motorcycle(id, 'XDDDDDDDDDD', 0, 0, 0, 0, '', 0, 0, 0, '', '', '');
+    // Se busca la moto de la busqueda del manage
+    for(var i=0; i<this.data.length; i++) {
+      if(this.data[i].id == id) {
+        // console.log(this.data[i]);
+        this._dataService.motorcycle = new Motorcycle(
+          id,
+          this.data[i].model,
+          this.data[i].min_price,
+          this.data[i].max_price,
+          this.data[i].onsale,
+          this.data[i].stock_quantity,
+          this.data[i].stock_status,
+          this.data[i].rating_count,
+          this.data[i].average_rating,
+          this.data[i].total_sales,
+          this.data[i].tax_status,
+          this.data[i].tax_class,
+          this.data[i].image);
+        break;
+      }
+    }
+
+    // Se redirige al update
     this._router.navigate(['update-motorcycle']);
   }
 

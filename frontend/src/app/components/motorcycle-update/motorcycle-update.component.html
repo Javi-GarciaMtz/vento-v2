@@ -1,1 +1,96 @@
-<p>motorcycle-update works!</p>
+
+<div class="col-md-12">
+
+    <div class="text-center">
+        <h1>{{page_title}}</h1>
+    </div>
+
+
+    <form class="col-md-5 ml-0 pl-0" #new_motorcycle_form="ngForm" (ngSubmit)="on_submit(new_motorcycle_form)">
+        <div class="form-group">
+            <label for="model">Modelo:</label>
+            <input type="text" name="model" class="form-control" #model="ngModel" [(ngModel)]="motorcycle.model" required>
+
+            <small *ngIf="!model.valid && model.touched" class="invalid-feedback d-block">
+                El modelo no es valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="min_price">Precio Rebajado:</label>
+            <input type="number" name="min_price" class="form-control" #min_price="ngModel" [(ngModel)]="motorcycle.min_price">
+        </div>
+
+        <div class="form-group">
+            <label for="max_price">Precio Real:</label>
+            <input type="number" name="max_price" class="form-control" #max_price="ngModel" [(ngModel)]="motorcycle.max_price">
+        </div>
+
+        <div class="form-group">
+            <label for="onsale">En venta: </label>
+            <input type="number" name="onsale" class="form-control" #onsale="ngModel" [(ngModel)]="motorcycle.onsale">
+        </div>
+
+        <div class="form-group">
+            <label for="stock_quantity">Cantidad en Stock:</label>
+            <input type="number" name="stock_quantity" class="form-control" #stock_quantity="ngModel" [(ngModel)]="motorcycle.stock_quantity">
+        </div>
+
+        <div class="form-group">
+            <label for="stock_status">Estado en Stock:</label>
+            <input type="text" name="stock_status" class="form-control" #stock_status="ngModel" [(ngModel)]="motorcycle.stock_status">
+        </div>
+
+        <div class="form-group">
+            <label for="rating_count"> (rating_count)</label>
+            <input type="number" name="rating_count" class="form-control" #rating_count="ngModel" [(ngModel)]="motorcycle.rating_count">
+        </div>
+
+        <div class="form-group">
+            <label for="average_rating"> (average_rating)</label>
+            <input type="number" name="average_rating" class="form-control" #average_rating="ngModel" [(ngModel)]="motorcycle.average_rating">
+        </div>
+
+        <div class="form-group">
+            <label for="total_sales">Ventas totales (total_sales)</label>
+            <input type="number" name="total_sales" class="form-control" #total_sales="ngModel" [(ngModel)]="motorcycle.total_sales">
+        </div>
+
+        <div class="form-group">
+            <label for="tax_status">Estado de impuestos (tax_status)</label>
+            <input type="text" name="tax_status" class="form-control" #tax_status="ngModel" [(ngModel)]="motorcycle.tax_status">
+        </div>
+
+        <div class="form-group">
+            <label for="tax_class"> (tax_class)</label>
+            <input type="text" name="tax_class" class="form-control" #tax_class="ngModel" [(ngModel)]="motorcycle.tax_class">
+        </div>
+
+        <div class="form-group">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Imagen</label>
+
+            <div *ngIf="motorcycle && motorcycle.image">
+                <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" alt="avatar">
+            </div>
+            <div *ngIf="(motorcycle && motorcycle.image == undefined) || motorcycle.image == ''">
+                <img src="assets/images/stock-motorcycle.png" class="avatar " alt="avatar">
+            </div>
+
+            <angular-file-uploader
+                [config]="afuConfig"
+                (ApiResponse)="image_upload($event)">
+            </angular-file-uploader>
+        </div>
+
+
+        <div class="text-center mt-3">
+            <input type="submit" value="Agregar Motocicleta" class="btn btn-outline-success">
+        </div>
+
+
+    </form>
+
+</div>
