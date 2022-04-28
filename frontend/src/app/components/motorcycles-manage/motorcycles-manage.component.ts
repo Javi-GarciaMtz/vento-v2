@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { MotorcycleService } from "../../services/motorcycle.service";
+import { faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { global } from "../../services/global";
 import { DataService } from "../../services/data.service";
 import { Motorcycle } from "../../models/motorcycle";
@@ -15,6 +16,9 @@ import { Motorcycle } from "../../models/motorcycle";
 
 export class MotorcyclesManageComponent implements OnInit {
 
+  public faPenToSquare = faPenToSquare;
+  public faTrashCan = faTrashCan;
+  public faImage = faImage;
   public url: string;
   public data: any;
 
