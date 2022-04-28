@@ -33,7 +33,7 @@ export class MotorcyclesManageComponent implements OnInit {
   ngOnInit(): void {
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
-    // console.log(data);
+    console.log(data);
     // console.log(this.data);
 
     setTimeout(()=>{

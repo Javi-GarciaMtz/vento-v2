@@ -14,7 +14,23 @@
   </thead>
   <tbody>
     <tr *ngFor="let group of data">
-      <td></td>
+      <td>
+        <!--<div *ngIf="motorcycle && motorcycle.image">
+          <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" alt="avatar">
+        </div>
+        <div *ngIf="(motorcycle && motorcycle.image == undefined) || motorcycle.image == ''">
+            <img src="assets/images/stock-motorcycle.png" class="avatar " alt="avatar">
+        </div>-->
+        <div *ngIf="group.image">
+          <img src="{{url + 'motorcycle/image/' + group.image }}" class="avatar img-fluid mx-auto d-block" width="80px" alt="avatar">
+        </div>
+        <div *ngIf="!group.image">
+          <div class="text-center">
+            <img src="assets/images/stock-motorcycle.png" class="avatar"  width="80px" alt="avatar">
+          </div>
+
+        </div>
+      </td>
       <td>{{group.model}}</td>
       <td>
         <div *ngIf="group.stock_status == 'instock'">
