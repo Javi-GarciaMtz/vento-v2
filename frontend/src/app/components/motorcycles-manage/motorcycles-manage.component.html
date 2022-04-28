@@ -41,13 +41,14 @@
         </div>
       </td>
       <td>
-        <s>{{group.max_price}}</s>
+        <s>${{format(group.max_price)}}</s>
         <br/>
-        {{group.min_price}}
+
+        ${{format(group.min_price)}}
       </td>
       <td>
         <div class="text-center">
-          <button type="button" class="btn btn-outline-warning" (click)="modify_motorcycle(group.id)">
+          <button type="button" class="btn btn-outline-secondary" (click)="modify_motorcycle(group.id)">
             <fa-icon [icon]="faPenToSquare"></fa-icon>
           </button>
 

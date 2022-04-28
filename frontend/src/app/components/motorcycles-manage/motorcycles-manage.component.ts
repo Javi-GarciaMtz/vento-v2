@@ -30,7 +30,14 @@ export class MotorcyclesManageComponent implements OnInit {
     this.url = global.url;
    }
 
+  format(num: number) {
+    return new Intl.NumberFormat('en-IN').format(num);
+  }
+
   ngOnInit(): void {
+    console.log("INIT");
+    console.log(new Intl.NumberFormat('en-IN').format(3500021.456));
+    console.log("FIN");
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
     console.log(data);
