@@ -3,11 +3,13 @@ import { DataService } from "../../services/data.service";
 import { Motorcycle } from '../../models/motorcycle';
 import { global } from "../../services/global";
 import { ToastrService } from 'ngx-toastr';
+import { MotorcycleService } from "../../services/motorcycle.service";
 
 @Component({
   selector: 'app-motorcycle-update',
   templateUrl: './motorcycle-update.component.html',
-  styleUrls: ['./motorcycle-update.component.css']
+  styleUrls: ['./motorcycle-update.component.css'],
+  providers: [MotorcycleService]
 })
 export class MotorcycleUpdateComponent implements OnInit {
 
@@ -44,7 +46,8 @@ export class MotorcycleUpdateComponent implements OnInit {
 
   constructor(
     public _dataService: DataService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _motorcycleService: MotorcycleService,
   ) {
     this.page_title = "Modificar una motocicleta";
     this.motorcycle = this._dataService.motorcycle;
@@ -59,8 +62,6 @@ export class MotorcycleUpdateComponent implements OnInit {
   image_upload(datos:any) {
     if(datos.status == 200) {
       this.motorcycle.image = datos.body.image;
-      // Actualizamos la imagen en la DB
-      this.on_submit(null);
       this._toastr.success( "La foto fue agregada correctamente.", "La foto fue agregada correctamente!", {
         closeButton: true
       });
@@ -73,6 +74,28 @@ export class MotorcycleUpdateComponent implements OnInit {
 
   on_submit(form: any) {
     console.log("Actualizando la moto: ", this.motorcycle);
+    this._motorcycleService.update_motorcycle(this.motorcycle).subscribe(
+      response => {
+        if(response && response.status) {
+          // console.log("Si funciono XD");
+          this._toastr.success( "La moto se ha actualizado correctamente.", "La moto se ha actualizado correctamente!", {
+            closeButton: true
+          });
+        } else {
+          // console.log("Error 1");
+          this._toastr.error( "La moto NO se ha actualizado correctamente.", "La moto NO se ha actualizado correctamente.", {
+            closeButton: true
+          });
+        }
+      },
+      error => {
+        // console.log("Error 2 ", <any>error);
+        this._toastr.error( "La moto NO se ha actualizado correctamente.", "La moto NO se ha actualizado correctamente.", {
+          closeButton: true
+        });
+      }
+    );
+
   }
 
 }
