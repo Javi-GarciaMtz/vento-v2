@@ -71,6 +71,13 @@
             <!-- <input type="text" name="tax_class"> -->
         </div>
 
+        <div *ngIf="motorcycle && motorcycle.image">
+            <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" alt="avatar">
+        </div>
+        <div *ngIf="(motorcycle && motorcycle.image == undefined) || motorcycle.image == ''">
+            <img src="assets/images/stock-motorcycle.png" class="avatar " alt="avatar">
+        </div>
+        
         <div class="form-group">
             <label for="image">Imagen</label>
             <angular-file-uploader

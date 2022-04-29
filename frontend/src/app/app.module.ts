@@ -17,6 +17,8 @@ import { MotorcycleUpdateComponent } from './components/motorcycle-update/motorc
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MotorcyclesManageComponent } from './components/motorcycles-manage/motorcycles-manage.component';
+import { MotorcyclePlansComponent } from './components/motorcycle-plans/motorcycle-plans.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MotorcyclesManageComponent } from './components/motorcycles-manage/moto
     MotorcycleUpdateComponent,
     HomeComponent,
     SidebarComponent,
-    MotorcyclesManageComponent
+    MotorcyclesManageComponent,
+    MotorcyclePlansComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

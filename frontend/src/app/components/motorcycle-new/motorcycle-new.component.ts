@@ -13,6 +13,7 @@ import { global } from '../../services/global';
 export class MotorcycleNewComponent implements OnInit {
 
   public page_title: string;
+  public url: string;
   public motorcycle: Motorcycle;
   public afuConfig = {
     multiple : false,
@@ -48,6 +49,7 @@ export class MotorcycleNewComponent implements OnInit {
   ) {
     this.page_title = "Agregar Nueva Motocicleta Prueba";
     this.motorcycle = new Motorcycle(1, '', 1, 2, 0, 0, 'instock', 0, 0, 0, 'tax status', 'tax class', '');
+    this.url = global.url;
   }
 
   ngOnInit(): void {
