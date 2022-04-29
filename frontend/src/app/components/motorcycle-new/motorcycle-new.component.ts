@@ -57,7 +57,6 @@ export class MotorcycleNewComponent implements OnInit {
 
     this._motorcycleService.add_motorcycle(this.motorcycle).subscribe(
       response => {
-        console.log(response);
 
         this._toastr.success( response["motorcycle"]["model"]+" fue agregada correctamente.", "Motocicleta agregada correctamente!", {
           closeButton: true
@@ -79,7 +78,6 @@ export class MotorcycleNewComponent implements OnInit {
   }
 
   image_upload(datos:any) {
-    // console.log(datos);
     if(datos.status == 200) {
       this.motorcycle.image = datos.body.image;
       this._toastr.success( "La foto fue agregada correctamente.", "La foto fue agregada correctamente!", {

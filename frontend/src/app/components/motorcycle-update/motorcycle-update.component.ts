@@ -55,8 +55,7 @@ export class MotorcycleUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log("----------------");
-    // console.log("DESDE UPDATE", this._dataService.motorcycle);
+
   }
 
   image_upload(datos:any) {
@@ -73,23 +72,19 @@ export class MotorcycleUpdateComponent implements OnInit {
   }
 
   on_submit(form: any) {
-    // console.log("Actualizando la moto: ", this.motorcycle);
     this._motorcycleService.update_motorcycle(this.motorcycle).subscribe(
       response => {
         if(response && response.status) {
-          // console.log("Si funciono XD");
           this._toastr.success( "La moto se ha actualizado correctamente.", "La moto se ha actualizado correctamente!", {
             closeButton: true
           });
         } else {
-          // console.log("Error 1");
           this._toastr.error( "La moto NO se ha actualizado correctamente.", "La moto NO se ha actualizado correctamente.", {
             closeButton: true
           });
         }
       },
       error => {
-        // console.log("Error 2 ", <any>error);
         this._toastr.error( "La moto NO se ha actualizado correctamente.", "La moto NO se ha actualizado correctamente.", {
           closeButton: true
         });

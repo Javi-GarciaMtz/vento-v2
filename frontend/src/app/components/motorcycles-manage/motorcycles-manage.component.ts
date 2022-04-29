@@ -38,13 +38,8 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log("INIT");
-    // console.log(new Intl.NumberFormat('en-IN').format(3500021.456));
-    // console.log("FIN");
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
-    // console.log(data);
-    // console.log(this.data);
 
     setTimeout(()=>{
         $('#datatableexample').DataTable({
@@ -109,29 +104,29 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   delete_motorcycle(id:any) {
-    // console.log("moto a borrar", id);
     this._motorcycleService.delete_motorcycle(id).subscribe(
       response => {
-        if(response && response.status) {
-          // console.log("Si funciono XD");
+        if(response && response.status == 'success') {
           for(var i=0; i<this.data.length; i++) {
             if(this.data[i].id == id) {
               this.data.splice(i,1);
+              break;
             }
           }
-          this._toastr.success( "La moto se ha borrado correctamente.", "La moto se ha borrado correctamente!", {
+          this._toastr.success( "Moto Borrada Correctamente.", "La moto se ha borrado correctamente!", {
             closeButton: true
           });
 
+          $('#'+id).hide();
+
         } else {
-          // console.log("Error 1");
           this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
             closeButton: true
           });
         }
+
       },
       error => {
-        // console.log("Error 2 ", <any>error);
         this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
           closeButton: true
         });
