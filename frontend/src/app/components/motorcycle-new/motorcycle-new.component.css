@@ -1,0 +1,17 @@
+.img-motorcycle {
+    vertical-align: middle;
+    width: 350px;
+    clip-path: circle(50% at 50% 50%);
+    height: 350px;
+    object-fit: cover;
+}
+
+@media (max-width: 800px){
+    .img-motorcycle {
+        width: 200px;
+    }
+}
+
+.picture {
+    margin-top: 150px;
+}
