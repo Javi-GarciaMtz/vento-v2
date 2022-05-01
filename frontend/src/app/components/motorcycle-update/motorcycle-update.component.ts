@@ -45,7 +45,7 @@ export class MotorcycleUpdateComponent implements OnInit {
   public url;
 
   constructor(
-    public _dataService: DataService,
+    private _dataService: DataService,
     private _toastr: ToastrService,
     private _motorcycleService: MotorcycleService,
   ) {

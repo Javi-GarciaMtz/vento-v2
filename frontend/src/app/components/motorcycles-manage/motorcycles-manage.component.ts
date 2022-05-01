@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { MotorcycleService } from "../../services/motorcycle.service";
-import { faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { global } from "../../services/global";
 import { DataService } from "../../services/data.service";
 import { Motorcycle } from "../../models/motorcycle";
@@ -20,6 +20,7 @@ export class MotorcyclesManageComponent implements OnInit {
   public faPenToSquare = faPenToSquare;
   public faTrashCan = faTrashCan;
   public faImage = faImage;
+  public fa = faCalendarCheck;
   public url: string;
   public data: any;
 
@@ -38,8 +39,11 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
+
+    console.log(this.data);
 
     setTimeout(()=>{
         $('#datatableexample').DataTable({
@@ -133,6 +137,14 @@ export class MotorcyclesManageComponent implements OnInit {
       }
     );
 
+  }
+
+  plans_motorcycle(id: number) {
+    // Se guarda la moto a modiciar en el data service
+    this._dataService.motorcycle = this.search_motorcycle(id);
+    
+    // Se redirige a Plans
+    this._router.navigate(['plans-motorcycle']);
   }
 
 }

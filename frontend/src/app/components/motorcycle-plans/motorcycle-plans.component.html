@@ -1,2 +1,183 @@
-<p>motorcycle-plans works!</p>
-<strong>{{price}}</strong>
+<div class="mb-5">
+    <!--<h3 class="text-center">{{page_title}}</h3>-->
+</div>
+
+<div class="container">
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        <!-- INICIO DE 12 MESES -->
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-secondary text-white">
+                    <h1 class="text-bold">12 MSI*</h1>
+                </div>
+                <div class="card-body">
+                    <div class="text-price text-center">
+                        <h1 class="card-title text-bold"><sup>$</sup>{{per_month(12)}}</h1>
+                        <p class="monthly">MENSUALES</p>
+                    </div>
+                    
+                    <div class="text-secondary">
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            0% Enganche
+                        </h5>
+                        <h5 class="card-text">
+                            <fa-icon [icon]="fa"></fa-icon>
+                            Pago con Tarjeta de Crédito
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-dark text-btn mb-2">Agregar al Carrito</button>
+                        <p class="terms">*Con Tarjetas Participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL DE 12 MESES -->
+
+        <!-- INICIO DE 6 MESES -->
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-secondary text-white">
+                    <h1 class="text-bold">6 MSI*</h1>
+                </div>
+                <div class="card-body">
+                    <div class="text-price text-center">
+                        <h1 class="card-title text-bold"><sup>$</sup>{{per_month(6)}}</h1>
+                        <p class="monthly">MENSUALES</p>
+                    </div>
+                    
+                    <div class="text-secondary">
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            0% Enganche
+                        </h5>
+                        <h5 class="card-text">
+                            <fa-icon [icon]="fa"></fa-icon>
+                            Pago con Tarjeta de Crédito
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-dark text-btn mb-2">Agregar al Carrito</button>
+                        <p class="terms">*Con Tarjetas Participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL DE 6 MESES -->
+
+        <!-- INICIO DE 3 MESES -->
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-secondary text-white">
+                    <h1 class="text-bold">3 MSI*</h1>
+                </div>
+                <div class="card-body">
+                    <div class="text-price text-center">
+                        <h1 class="card-title text-bold"><sup>$</sup>{{per_month(3)}}</h1>
+                        <p class="monthly">MENSUALES</p>
+                    </div>
+                    
+                    <div class="text-secondary">
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            0% Enganche
+                        </h5>
+                        <h5 class="card-text">
+                            <fa-icon [icon]="fa"></fa-icon>
+                            Pago con Tarjeta de Crédito
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-dark text-btn mb-2">Agregar al Carrito</button>
+                        <p class="terms">*Con Tarjetas Participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL DE 3 MESES -->
+    </div>
+
+    <!--- PLANES SEMANALES -->
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-5">
+        <!-- INICIO DE 52 SEMANAS -->
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center temps text-white">
+                    <h1 class="text-bold">52 Semanas</h1>
+                    <p class="credit text-bold">VENTO CREDIT</p>
+                </div>
+                <div class="card-body">
+                    <div class="text-price text-center">
+                        <h1 class="card-title text-bold"><sup>$</sup>{{PMT(52)}}</h1>
+                        <p class="monthly">SEMANALES</p>
+                    </div>
+                    
+                    <div class="text-secondary">
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            Enganche de ${{down_payment()}}
+                        </h5>
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            Requiere Investigación o Aval
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-dark mb-2 text-btn">Más Información</button>
+                        <p class="terms">*Con Tarjetas Participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL DE 52 SEMANAS -->
+
+        <!-- INICIO DE 104 SEMANAS -->
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center temps text-white">
+                    <h1 class="text-bold">104 Semanas</h1>
+                    <p class="credit text-bold">VENTO CREDIT</p>
+                </div>
+                <div class="card-body">
+                    <div class="text-price text-center">
+                        <h1 class="card-title text-bold"><sup>$</sup>{{PMT(104)}}</h1>
+                        <p class="monthly">SEMANALES</p>
+                    </div>
+                    
+                    <div class="text-secondary">
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            Enganche de ${{down_payment()}}
+                        </h5>
+                        <h5 class="card-text">
+                            <fa-icon [icon]="faCircleCheck"></fa-icon>
+                            Requiere Investigación o Aval
+                        </h5>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-dark mb-2 text-btn">Más Información</button>
+                        <p class="terms">*Con Tarjetas Participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FINAL DE 104 SEMANAS -->
+    </div>
+</div>
+
+
+
+
