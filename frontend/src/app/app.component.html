@@ -12,7 +12,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <!-- SECCION DE MOTOS -->
-        <button (click)="check_side()">Modo administrador</button>
+        <li class="nav-item">
+          <button class="btn btn-outline-secondary" (click)="check_side()">
+            <fa-icon [icon]="faUserLock"></fa-icon>
+          </button>
+        </li>
+
       </ul>
 
     </div>
@@ -84,6 +89,7 @@
                 </li>
               </ul>
             </li>
+
             <li>
               <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
                 <fa-icon [icon]="faBoxArchive"></fa-icon>
@@ -95,6 +101,23 @@
                   <a class="nav-link px-0 text-white" [routerLink]="['/update-inventory']">
                     <fa-icon [icon]="faFilePen" class="px-2"></fa-icon>
                     <span class="d-none d-sm-inline">Actualizar</span>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
+            <li>
+              <a href="#submenu-users" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                <fa-icon [icon]="faUserShield"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Usuarios</span>
+              </a>
+
+              <ul class="collapse nav flex-column ms-1" id="submenu-users" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a class="nav-link px-0 text-white" [routerLink]="['/update-inventory']">
+                    <fa-icon [icon]="faUserPlus" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Agregar</span>
                   </a>
                 </li>
               </ul>
@@ -130,5 +153,41 @@
 <div *ngIf="!show_sidebar">
   <app-home></app-home>
 </div>
+
+<footer class="bg-dark text-center text-white" style="height: 500px;">
+  <!-- Grid container -->
+  <div class="mt-5"></div><div class="mt-5"></div><div class="mt-5"></div><div class="mt-5"></div>
+
+
+  <div class="container p-4 pb-0 mb-3">
+      <img src="assets/images/logo.png" width="235px" class="d-inline-block align-top mr-2" alt="">
+  </div>
+  <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+          <!-- Facebook -->
+          <i class="fab fa-facebook-f fa-2x mr-5"></i>
+
+          <!-- Instagram -->
+          <i class="fab fa-instagram fa-2x mr-5"></i>
+
+          <!-- Twitter -->
+          <i class="fab fa-twitter fa-2x mr-5"></i>
+
+          <!-- Youtube -->
+          <i class="fab fa-youtube fa-2x mr-5"></i>
+
+      </section>
+      <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
 
 
