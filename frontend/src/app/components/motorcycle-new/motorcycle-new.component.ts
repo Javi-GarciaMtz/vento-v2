@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Motorcycle } from '../../models/motorcycle';
+import { global } from '../../services/global';
 import { MotorcycleService } from "../../services/motorcycle.service";
 import { ToastrService } from 'ngx-toastr';
-import { global } from '../../services/global';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-motorcycle-new',
@@ -44,6 +46,7 @@ export class MotorcycleNewComponent implements OnInit {
   };
 
   constructor(
+    private _router: Router,
     private _motorcycleService: MotorcycleService,
     private _toastr: ToastrService
   ) {
@@ -60,16 +63,16 @@ export class MotorcycleNewComponent implements OnInit {
     this._motorcycleService.add_motorcycle(this.motorcycle).subscribe(
       response => {
 
-        this._toastr.success( response["motorcycle"]["model"]+" fue agregada correctamente.", "Motocicleta agregada correctamente!", {
+        this._toastr.success( response["motorcycle"]["model"]+" fue agregada correctamente.", "Exito al Guardar!", {
           closeButton: true
         });
 
         form.reset();
-
+        this._router.navigate(['manage-motorcycle']);
       },
       error => {
         console.log(<any>error);
-        this._toastr.error('ERROR: ' + error["error"]["message"], 'La motocicleta NO se guardo correctamente', {
+        this._toastr.error('ERROR: ' + error["error"]["message"], 'Error al Guardar!', {
           // timeOut: 3000,
           closeButton: true,
           // progressBar: true
@@ -82,11 +85,11 @@ export class MotorcycleNewComponent implements OnInit {
   image_upload(datos:any) {
     if(datos.status == 200) {
       this.motorcycle.image = datos.body.image;
-      this._toastr.success( "La foto fue agregada correctamente.", "La foto fue agregada correctamente!", {
+      this._toastr.success( "La Foto fue Agregada Correctamente.", "Exito al Guardar!", {
         closeButton: true
       });
     } else {
-      this._toastr.error( "La foto NO fue agregada correctamente.", "La foto NO fue agregada correctamente!", {
+      this._toastr.error( "La Foto NO fue Agregada Correctamente.", "Error al Guardar!", {
         closeButton: true
       });
     }

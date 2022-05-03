@@ -19,6 +19,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MotorcyclesManageComponent } from './components/motorcycles-manage/motorcycles-manage.component';
 import { MotorcyclePlansComponent } from './components/motorcycle-plans/motorcycle-plans.component';
 import { ErrorComponent } from './components/error/error.component';
+import { InventoryUpdateComponent } from './components/inventory-update/inventory-update.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ErrorComponent } from './components/error/error.component';
     SidebarComponent,
     MotorcyclesManageComponent,
     MotorcyclePlansComponent,
-    ErrorComponent
+    ErrorComponent,
+    InventoryUpdateComponent
   ],
   imports: [
     BrowserModule,

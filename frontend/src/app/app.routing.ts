@@ -6,7 +6,9 @@ import { MotorcycleNewComponent } from "./components/motorcycle-new/motorcycle-n
 import { MotorcycleUpdateComponent } from "./components/motorcycle-update/motorcycle-update.component";
 import { MotorcyclesManageComponent } from "./components/motorcycles-manage/motorcycles-manage.component";
 import { MotorcyclePlansComponent } from "./components/motorcycle-plans/motorcycle-plans.component";
+import { InventoryUpdateComponent } from "./components/inventory-update/inventory-update.component";
 import { ErrorComponent } from "./components/error/error.component";
+
 
 
 // Rutas definidas
@@ -16,6 +18,7 @@ const appRoutes: Routes = [
     {path: 'update-motorcycle', component: MotorcycleUpdateComponent},
     {path: 'manage-motorcycle', component: MotorcyclesManageComponent},
     {path: 'plans-motorcycle', component: MotorcyclePlansComponent},
+    {path: 'update-inventory', component: InventoryUpdateComponent},
     {path: '**', component: ErrorComponent}
 ];
 

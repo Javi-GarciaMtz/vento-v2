@@ -1,4 +1,6 @@
-<p>motorcycles-manage works!</p>
+<div class="text-center">
+  <h1>{{page_title}}</h1>
+</div>
 
 <hr>
 
@@ -15,19 +17,19 @@
   </thead>
   <tbody>
     <tr *ngFor="let motorcycle of data" id="{{motorcycle.id}}">
-      
+
       <td class="text-center">
         <div *ngIf="motorcycle.image">
           <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" width="80px" alt="avatar">
         </div>
         <div *ngIf="!motorcycle.image">
           <div class="text-center">
-            <img src="assets/images/stock-motorcycle.png" class="avatar"  width="80px" alt="avatar">
+            <img src="assets/images/stock-motorcycle-I.png" class="avatar"  width="80px" alt="avatar">
           </div>
 
         </div>
       </td>
-      
+
       <td class="text-center">
         {{motorcycle.model}}
       </td>
@@ -37,7 +39,7 @@
           <span class="text-success text-bold">En existencia</span>
         </div>
         <div *ngIf="motorcycle.stock_status != 'instock'">
-          <span class="text-danger text-bold">Agotodo</span>
+          <span class="text-danger text-bold">Agotado</span>
         </div>
       </td>
 
@@ -52,17 +54,17 @@
       </td>
 
       <td class="text-center">
-        
+
         <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Editar" (click)="modify_motorcycle(motorcycle.id)">
           <fa-icon [icon]="faPenToSquare"></fa-icon>
         </button>
 
-        <button type="button" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete_motorcycle(motorcycle.id)">
-          <fa-icon [icon]="faTrashCan"></fa-icon>
+        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Planes" (click)="plans_motorcycle(motorcycle.id)">
+          <fa-icon [icon]="fa"></fa-icon>
         </button>
 
-        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top" title="Planes" (click)="plans_motorcycle(motorcycle.id)">
-          <fa-icon [icon]="fa"></fa-icon>
+        <button type="button" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete_motorcycle(motorcycle.id)">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
         </button>
       </td>
 

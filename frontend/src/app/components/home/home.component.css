@@ -1,0 +1,7 @@
+body {
+    font-family: saira, Sans-serif;
+}
+
+.filters {
+    filter: saturate(160%);
+}
