@@ -1,0 +1,19 @@
+.img-motorcycle {
+    vertical-align: middle;
+    width: 450px;
+}
+
+.picture {
+    margin-top: 210px;
+}
+
+@media (max-width: 800px){
+    .img-motorcycle {
+        width: 200px;
+    }
+
+    .picture {
+        margin-top: 15px;
+    }
+}
+

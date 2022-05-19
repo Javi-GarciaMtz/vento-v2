@@ -12,6 +12,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <!-- SECCION DE MOTOS -->
+        <li class="nav-item">
+          <button class="btn btn-outline-secondary" (click)="check_side()">
+            <fa-icon [icon]="faUserLock"></fa-icon>
+          </button>
+        </li>
+
       </ul>
 
     </div>
@@ -22,113 +28,166 @@
 <!--<router-outlet></router-outlet>-->
 
 <!-- INICIO PRUEBAS xD-->
-<div class="container-fluid text-decoration-none">
-  <div class="row flex-nowrap">
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <fa-icon [icon]="faUserLock" class="px-2"></fa-icon>
-          <span class="fs-5 d-none d-sm-inline">Administración</span>
-        </a>
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          <li class="nav-item">
-            <a class="nav-link align-middle px-0 text-white" [routerLink]="['/']">
-              <fa-icon [icon]="faHomeLg"></fa-icon>
-              <span class="ms-1 d-none d-sm-inline">Home</span>
-            </a>
-          </li>
 
-          <li>
-            <a class="nav-link px-0 align-middle text-white" [routerLink]="['/']">
-              <fa-icon [icon]="faGaugeHigh"></fa-icon>
-              <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-            </a>
-          </li>
 
-          <li>
-            <a href="#" class="nav-link px-0 align-middle text-white">
-              <fa-icon [icon]="faCartFlatbed"></fa-icon>
-              <span class="ms-1 d-none d-sm-inline">Pedidos</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-              <fa-icon [icon]="faMotorcycle"></fa-icon>
-              <span class="ms-1 d-none d-sm-inline">Productos</span>
-            </a>
-
-            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-              <li class="w-100">
-                <a class="nav-link px-0 text-white" [routerLink]="['/manage-motorcycle']">
-                  <fa-icon [icon]="faBorderAll" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Todos los productos</span>
-                </a>
-              </li>
-              <li>
-                <a class="nav-link px-0 text-white" [routerLink]="['/add-motorcycle']">
-                  <fa-icon [icon]="faPlusCircle" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Añadir nuevo</span>
-                </a>
-              </li>
-              <!--<li>
-                <a class="nav-link px-0 text-white" [routerLink]="['/manage-motorcycle']">
-                  <fa-icon [icon]="faListCheck" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Gestionar</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0 text-white">
-                  <fa-icon [icon]="faTrash" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Eliminar</span>
-                </a>
-              </li>-->
-              <li>
-                <a href="#" class="nav-link px-0 text-white">
-                  <fa-icon [icon]="faTags" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Categoria</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-              <fa-icon [icon]="faBoxArchive"></fa-icon>
-              <span class="ms-1 d-none d-sm-inline">Inventario</span>
-            </a>
-
-            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
-              <li class="w-100">
-                <a class="nav-link px-0 text-white" [routerLink]="['/manage-motorcycle']">
-                  <fa-icon [icon]="faFilePen" class="px-2"></fa-icon>
-                  <span class="d-none d-sm-inline">Actualizar</span>
-                </a>
-              </li>
-            </ul>
-
-          </li>
-        </ul>
-        <hr>
-        <div class="dropdown pb-4">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-            <span class="d-none d-sm-inline mx-1">User</span>
+<div *ngIf="show_sidebar">
+  <div class="container-fluid text-decoration-none">
+    <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+          <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <fa-icon [icon]="faUserLock" class="px-2"></fa-icon>
+            <span class="fs-5 d-none d-sm-inline">Administración</span>
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a class="nav-link align-middle px-0 text-white" [routerLink]="['/']">
+                <fa-icon [icon]="faHomeLg"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Home</span>
+              </a>
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+
+            <li>
+              <a class="nav-link px-0 align-middle text-white" [routerLink]="['/']">
+                <fa-icon [icon]="faGaugeHigh"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="nav-link px-0 align-middle text-white">
+                <fa-icon [icon]="faCartFlatbed"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Pedidos</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                <fa-icon [icon]="faMotorcycle"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Productos</span>
+              </a>
+
+              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a class="nav-link px-0 text-white" [routerLink]="['/manage-motorcycle']">
+                    <fa-icon [icon]="faBorderAll" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Todos los productos</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link px-0 text-white" [routerLink]="['/add-motorcycle']">
+                    <fa-icon [icon]="faPlusCircle" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Añadir nuevo</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="nav-link px-0 text-white">
+                    <fa-icon [icon]="faTags" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Categoria</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                <fa-icon [icon]="faBoxArchive"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Inventario</span>
+              </a>
+
+              <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a class="nav-link px-0 text-white" [routerLink]="['/update-inventory']">
+                    <fa-icon [icon]="faFilePen" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Actualizar</span>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
+            <li>
+              <a href="#submenu-users" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                <fa-icon [icon]="faUserShield"></fa-icon>
+                <span class="ms-1 d-none d-sm-inline">Usuarios</span>
+              </a>
+
+              <ul class="collapse nav flex-column ms-1" id="submenu-users" data-bs-parent="#menu">
+                <li class="w-100">
+                  <a class="nav-link px-0 text-white" [routerLink]="['/update-inventory']">
+                    <fa-icon [icon]="faUserPlus" class="px-2"></fa-icon>
+                    <span class="d-none d-sm-inline">Agregar</span>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
           </ul>
+          <hr>
+          <div class="dropdown pb-4">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+              id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+              <span class="d-none d-sm-inline mx-1">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col py-3">
-      <router-outlet></router-outlet>
+      <div class="col py-3">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>
+
+<div *ngIf="!show_sidebar">
+  <app-home></app-home>
+</div>
+
+<footer class="bg-dark text-center text-white" style="height: 500px;">
+  <!-- Grid container -->
+  <div class="mt-5"></div><div class="mt-5"></div><div class="mt-5"></div><div class="mt-5"></div>
+
+
+  <div class="container p-4 pb-0 mb-3">
+      <img src="assets/images/logo.png" width="235px" class="d-inline-block align-top mr-2" alt="">
+  </div>
+  <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+          <!-- Facebook -->
+          <i class="fab fa-facebook-f fa-2x mr-5"></i>
+
+          <!-- Instagram -->
+          <i class="fab fa-instagram fa-2x mr-5"></i>
+
+          <!-- Twitter -->
+          <i class="fab fa-twitter fa-2x mr-5"></i>
+
+          <!-- Youtube -->
+          <i class="fab fa-youtube fa-2x mr-5"></i>
+
+      </section>
+      <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+

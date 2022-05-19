@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { MotorcycleService } from "../../services/motorcycle.service";
-import { faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faImage, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { global } from "../../services/global";
 import { DataService } from "../../services/data.service";
 import { Motorcycle } from "../../models/motorcycle";
@@ -17,20 +17,23 @@ import { ToastrService } from 'ngx-toastr';
 
 export class MotorcyclesManageComponent implements OnInit {
 
+  public page_title: string;
   public faPenToSquare = faPenToSquare;
   public faTrashCan = faTrashCan;
   public faImage = faImage;
+  public fa = faCalendarCheck;
   public url: string;
   public data: any;
 
   constructor(
-    public _http: HttpClient,
+    private _http: HttpClient,
     private _router: Router,
-    public _dataService: DataService,
+    private _dataService: DataService,
     private _toastr: ToastrService,
     private _motorcycleService: MotorcycleService
   ) {
     this.url = global.url;
+    this.page_title = "Productos";
    }
 
   format(num: number) {
@@ -38,8 +41,11 @@ export class MotorcyclesManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this._http.get(this.url + 'motorcycle/datatable').subscribe(data => {
     this.data = data;
+
+    console.log(this.data);
 
     setTimeout(()=>{
         $('#datatableexample').DataTable({
@@ -113,26 +119,34 @@ export class MotorcyclesManageComponent implements OnInit {
               break;
             }
           }
-          this._toastr.success( "Moto Borrada Correctamente.", "La moto se ha borrado correctamente!", {
+          this._toastr.success(response["motorcycle"]["model"]+" fue Eliminada Correctamente.", "Exito al Eliminar!", {
             closeButton: true
           });
 
           $('#'+id).hide();
 
         } else {
-          this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
+          this._toastr.error("La motocicleta NO se elimino correctamente.", "Error al Eliminar!", {
             closeButton: true
           });
         }
 
       },
       error => {
-        this._toastr.error( "La moto NO se ha borrado correctamente.", "La moto NO se ha borrado correctamente.", {
+        this._toastr.error("La motocicleta NO se elimino correctamente.", "Error al Eliminar!", {
           closeButton: true
         });
       }
     );
 
+  }
+
+  plans_motorcycle(id: number) {
+    // Se guarda la moto a modiciar en el data service
+    this._dataService.motorcycle = this.search_motorcycle(id);
+
+    // Se redirige a Plans
+    this._router.navigate(['plans-motorcycle']);
   }
 
 }

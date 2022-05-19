@@ -1,0 +1,32 @@
+.terms {
+  font-size: 13px;
+}
+
+.text-price {
+  color: #555555;
+}
+
+.temps {
+  background-color: #002169;
+}
+
+.credit {
+  margin-top: -10px;
+  margin-bottom: -5px;
+}
+
+.text-btn{
+  font-size: 22px;
+}
+
+.text-bold{
+  font-weight: 900;
+}
+
+.monthly {
+  margin-top: -10px;
+}
+
+.dollar {
+  font-size: 22px;
+}

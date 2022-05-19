@@ -1,63 +1,73 @@
-<p>motorcycles-manage works!</p>
+<div class="text-center">
+  <h1>{{page_title}}</h1>
+</div>
 
 <hr>
 
 <table class="table table-striped table-bordered table-sm row-border hover" id="datatableexample">
   <thead>
     <tr>
-      <th><fa-icon [icon]="faImage"></fa-icon></th>
-      <th>SKU</th>
-      <th>Iventario</th>
-      <th>Precio</th>
-      <th>Actualizar</th>
+      <th class="text-center"><fa-icon [icon]="faImage"></fa-icon></th>
+      <th class="text-center">SKU</th>
+      <th class="text-center">Iventario</th>
+      <th class="text-center">Precio</th>
+      <th class="text-center">Cantidad en Stock</th>
+      <th class="text-center">Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let group of data" id="{{group.id}}">
-      <td>
-        <!--<div *ngIf="motorcycle && motorcycle.image">
-          <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" alt="avatar">
+    <tr *ngFor="let motorcycle of data" id="{{motorcycle.id}}">
+
+      <td class="text-center">
+        <div *ngIf="motorcycle.image">
+          <img src="{{url + 'motorcycle/image/' + motorcycle.image }}" class="avatar img-fluid mx-auto d-block" width="80px" alt="avatar">
         </div>
-        <div *ngIf="(motorcycle && motorcycle.image == undefined) || motorcycle.image == ''">
-            <img src="assets/images/stock-motorcycle.png" class="avatar " alt="avatar">
-        </div>-->
-        <div *ngIf="group.image">
-          <img src="{{url + 'motorcycle/image/' + group.image }}" class="avatar img-fluid mx-auto d-block" width="80px" alt="avatar">
-        </div>
-        <div *ngIf="!group.image">
+        <div *ngIf="!motorcycle.image">
           <div class="text-center">
-            <img src="assets/images/stock-motorcycle.png" class="avatar"  width="80px" alt="avatar">
+            <img src="assets/images/stock-motorcycle-I.png" class="avatar"  width="80px" alt="avatar">
           </div>
 
         </div>
       </td>
-      <td>{{group.model}}</td>
-      <td>
-        <div *ngIf="group.stock_status == 'instock'">
+
+      <td class="text-center">
+        {{motorcycle.model}}
+      </td>
+
+      <td class="text-center">
+        <div *ngIf="motorcycle.stock_status == 'instock'">
           <span class="text-success text-bold">En existencia</span>
         </div>
-        <div *ngIf="group.stock_status != 'instock'">
-          <span class="text-danger text-bold">Agotodo</span>
+        <div *ngIf="motorcycle.stock_status != 'instock'">
+          <span class="text-danger text-bold">Agotado</span>
         </div>
       </td>
-      <td>
-        <s>${{format(group.max_price)}}</s>
+
+      <td class="text-center">
+        <s>${{format(motorcycle.max_price)}}</s>
         <br/>
-
-        ${{format(group.min_price)}}
+        ${{format(motorcycle.min_price)}}
       </td>
-      <td>
-        <div class="text-center">
-          <button type="button" class="btn btn-outline-secondary" (click)="modify_motorcycle(group.id)">
-            <fa-icon [icon]="faPenToSquare"></fa-icon>
-          </button>
 
-          <button type="button" class="btn btn-outline-danger" (click)="delete_motorcycle(group.id)">
-            <fa-icon [icon]="faTrashCan"></fa-icon>
-          </button>
-        </div>
+      <td class="text-center">
+        {{motorcycle.stock_quantity}}
       </td>
+
+      <td class="text-center">
+
+        <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Editar" (click)="modify_motorcycle(motorcycle.id)">
+          <fa-icon [icon]="faPenToSquare"></fa-icon>
+        </button>
+
+        <button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Planes" (click)="plans_motorcycle(motorcycle.id)">
+          <fa-icon [icon]="fa"></fa-icon>
+        </button>
+
+        <button type="button" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete_motorcycle(motorcycle.id)">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+        </button>
+      </td>
+
     </tr>
   </tbody>
 </table>
-
