@@ -1,0 +1,21 @@
+/* PRECIO CONTADO */
+[optimize id="SPECTRA5I" action="MIN"][/optimize]
+
+/* 12 MSI */
+[optimize id="SPECTRA5I" action="MSI" temp=12][/optimize]
+
+/* 6 MSI */
+[optimize id="SPECTRA5I" action="MSI" temp=6][/optimize]
+
+/* 3 MSI */
+[optimize id="SPECTRA5I" action="MSI" temp=3][/optimize]
+
+/* VENTO CREDIT 52 */
+[optimize id="SPECTRA5I" action="VC" temp=52][/optimize]
+
+/* VENTO CREDIT 104 */
+[optimize id="SPECTRA5I" action="VC" temp=104][/optimize]
+
+/* ENGANCHE */
+[optimize id="SPECTRA5I" action="ENG" temp=15][/optimize]
+

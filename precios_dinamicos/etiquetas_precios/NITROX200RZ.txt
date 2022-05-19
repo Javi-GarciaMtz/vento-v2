@@ -1,0 +1,21 @@
+/* PRECIO CONTADO */
+[optimize id="NITROX200RZ" action="MIN"][/optimize]
+
+/* 12 MSI */
+[optimize id="NITROX200RZ" action="MSI" temp=12][/optimize]
+
+/* 6 MSI */
+[optimize id="NITROX200RZ" action="MSI" temp=6][/optimize]
+
+/* 3 MSI */
+[optimize id="NITROX200RZ" action="MSI" temp=3][/optimize]
+
+/* VENTO CREDIT 52 */
+[optimize id="NITROX200RZ" action="VC" temp=52][/optimize]
+
+/* VENTO CREDIT 104 */
+[optimize id="NITROX200RZ" action="VC" temp=104][/optimize]
+
+/* ENGANCHE */
+[optimize id="NITROX200RZ" action="ENG" temp=15][/optimize]
+
