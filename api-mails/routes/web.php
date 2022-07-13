@@ -30,12 +30,9 @@ Route::get('/test', function () {
 
     $receivers = array(
         'miltonponceipn@gmail.com',
-        'hector.poncevna@gmail.com',
-        'sweet_roses197@hotmail.com',
-        'h.ponce@bmsa.mx',
-        'toxquisandra@gmail.com',
-        'aline.quintero.vna@gmail.com',
-        'moises.calderon@vnagroup.us'
+        'ja.1999.ga@gmail.com',
+        'javi.javier.gm@gmail.com',
+        '1199.correo.pruebas@gmail.com'
     );
 
     $data_email['confirmation_code'] = '200';
@@ -48,15 +45,9 @@ Route::get('/test', function () {
         });
     }
 
-    $html = "<h3 style='text-align: center; '>CORREO ELECTRONICO TESTING.</h3>";
-
-    $data_email['html'] = $html;
-
     /*Mail::send('mails.mail', $data_email, function($message) use ($receivers) {
         $message->to($receivers)->subject('Prueba de Correo Marketing desde Correo @vento.com');
     });*/
-
-    //Mail::to($receivers)->send(new SendMail());
 
     return "<h1 style='text-align: center;'><span style='color: rgb(35, 111, 161); font-family: 'comic sans ms', sans-serif;'>CORREO ENVIADO CORRECTAMENTE</span></h1>";
 });
